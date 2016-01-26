@@ -104,7 +104,7 @@ Or, by integrating the provided Python client file with your own code:
 	sqlrc = sqlpie_client.SQLpieClient("http://localhost:5000")
 	response = sqlrc.document_put({"documents":[{"_id":"001", "text":"Hello World, Johnny Appleseed"}]})
 
-Note that the commands above will creaate a database in the development environment. In general, to create the database in a different environment, or to run the server in a different environment, use:
+Note that the commands above will create a database in the development environment. In general, to create the database in a different environment, or to run the server in a different environment, use:
 
 	$ sqlpie_env=production python scripts/create_db.py
 
