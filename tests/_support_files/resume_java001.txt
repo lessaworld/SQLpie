@@ -1,0 +1,64 @@
+Josh Smith
+
+Work Experience:
+
+Java/J2EE Developer : Royals Bank - Pittsburgh, PA : September 2012 to Present
+ 
+Responsibilities: 
+- well experienced in working with Java Server Faces(JSF) 2.0 for building component based user interfaces. 
+- worked extensively with Struts 2 framework coding the Action Support class, the Service layer, the data access layer, domain models. 
+- hibernate 3.3 was used as high performance object/relational mapping tool. 
+- implemented Spring 3.1 framework for flexible dependency injection and annotation-based configuration styles. 
+- expertise in using the JAXB APIs for marshalling and unmarshalling of the Java objects. 
+- used SAX Parser to read date from the input and output XML document (Parsing). 
+- extensively worked on SVN revision control software. 
+- involved in database programming in Oracle 11g database. 
+- Web Sphere Application server 8.0 was used to make the data source configuration to connect the application to the required database to retrieve or update necessary information. 
+- well experienced in writing Stored Procedures and functions using PL/SQL. 
+- involved in developing the web services with RESTful APIs. 
+- intensively used JExplorer the LDAP Client, to manage an unified directory of user profiles. 
+- expertise in working with XML documents and related XSL, XSLT and XSD 
+- expertise in writing test cases using JUnit unit testing framework. 
+- worked with Log4j as the logging framework. 
+- followed Agile Methodology and involved in SCRUM meetings with the team.
+
+Java Consultant : XYZ Corp. - Chicago, IL : April 2011 to August 2012
+ 
+Responsibilities: 
+- participated in design, development and testing phases. 
+- used various Core Java concepts such as Exception Handling, Collection APIs to implement various features and enhancements. 
+- developed presentation layer using HTML, CSS, Extjs, Jboss seam, CMS, Javascript. Worked on enterprise management through Documentum 
+- provided production support and resolved data, application and connectivity issues related to Java programs functionality. 
+- consumed SOAP and RESTFUL web services. 
+- created client stubs using AXIS2. 
+- wrote DOM and SAX parsers for XML parsing and worked on JSON parsing using external libraries. 
+- wrote DML SQL queries in MySQL database. 
+- performed testing using SOAP UI and REST clients. 
+- converted obsolete Java web interface into a Rich Internet Application using ExtJS. 
+- involved in integration testing. 
+- implemented the logging mechanism using log4j framework. 
+- wrote test cases in JUnit for unit testing of classes. 
+- worked on SVN version control. 
+- used Eclipse IDE for developing code modules in the development environment. 
+
+Development Tools: Java 1.6, JSF, Richfaces, Spring, Soap and RestFul Web Services, SOAP UI Pro, EXTJS, XML, JSON, Javascript, HTML 4.01, Apache Axis 2.1, MySql, Junit4.
+
+Java/J2EE Software Designer : Hometown Financials Ltd. - Hartford, CT :  November 2010 to March 2011
+  
+Responsibilities: 
+- analyzed the Functional Specifications provided by the client. 
+- created Component Specifications with detail design, sequence diagrams, component diagrams. 
+- designed web service operations with physical interfaces. 
+- analyzed the User Interface (UI) with the business team to validate accuracy. 
+- performed extensive use of Servlets & JSP for presentation layer along with Javascript for the client side validations. 
+- took care of complete Java multi-threading part in backend components. 
+- used SFX, internal framework of state Farm, on presentation layer of MVC model. 
+- used Mule ESB to exchange the data between the applications. 
+- in-depth knowledge/experience of Web 2.0, Javascript, JQuery, EXTJS, W3C Standards 
+- designed the application based on Spring framework. 
+- extensively used Spring SourceTool IDE. 
+- extensively used Microsoft Visio 2010 in drawing diagrams for the design documents. 
+- worked with Sharepoint Portal as an artifacts repository. 
+- used Internal Wiki Page for document reference. 
+ 
+Technical Environment: J2EE, Servlets, JSP, Java 1.6, EXTJS, Spring 3.0 , SpringSource Tool Suite 2.8.0, JBoss, HTML 4.01, SQL, CSS, Javascript, SDLC, UML, Maven.

@@ -1,0 +1,64 @@
+/*
+
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+
+*/
+
+body{
+    font-family: 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', Monaco, Courier, monospace;
+    line-height: 1.4em;
+}
+
+div.branding {
+    font-size:11pt;
+    margin-left:20px;
+    background-color:#f1f1f1;
+    padding-left:10px;
+}
+
+div.header {
+    font-size:11pt;
+    margin-left:40px;
+}
+
+.heading {
+    font-size:11pt;
+    color:#0e0e0e;
+}
+
+.return {
+    font-size:9pt;
+    color:#0e0e0e;
+    margin-left:40px;
+}
+
+div.section {
+    font-size:11pt;
+    margin: 1em 0;
+    padding: 0.5em 0 0.3em 0.5em;
+    color: #777;
+    margin-left:20px;
+}
+div.section > span {
+    font-weight:bold;
+}
+div.documentation {
+    font-size:9pt;
+    margin: 1em 0;
+    border-left: 1px dashed #aaa8a8;
+    border-top: 1px dashed #aaa8a8;
+    border-bottom: 1px dashed #aaa8a8;
+    padding: 0.5em 0 0.3em 0.5em;
+    color: #777;
+    margin-left:40px;
+}
+
+div.documentation > pre {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+}

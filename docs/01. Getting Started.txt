@@ -1,0 +1,128 @@
+==============================================================
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+==============================================================
+
+
+== 1. Setting up a dedicated Python environment.
+
+    If needed, install virtualenv using pip
+
+    $ sudo pip install virtualenv
+
+    Then, switch to the newly created project directory and create a new virtual environment.
+
+    $ virtualenv env
+    $ source env/bin/activate
+
+    Optionally, test which Python (and which pip) are being used:
+
+    $ which python
+    $ which pip
+
+    That should point to binary files in the newly created env/bin directory
+
+
+== 2. Next, install the project dependencies.
+
+    $ pip install -r requirements.txt
+
+
+== 3. MySQL Server installation.
+
+    Make sure you have a MySQL running and available - instructions to set that up are outside the scope of this document.
+
+
+== 4. Configuring the application.
+
+     The application's general settings can be found in the config/config.json file.
+     Change any MySQL Server settings as needed before creating the database.
+
+     e.g.
+
+        {
+            "db" : {
+                "production" : {
+                    "mysql_database_user"         : "root",
+                    "mysql_database_password"     : "",
+                    "mysql_database_db"           : "SQLpie_production",
+                    "mysql_database_host"         : "localhost",
+                    "mysql_database_port"         : 3306
+                },
+                "test" : {
+                    "mysql_database_user"         : "root",
+                    "mysql_database_password"     : "",
+                    "mysql_database_db"           : "SQLpie_test",
+                    "mysql_database_host"         : "localhost",
+                    "mysql_database_port"         : 3306
+                },
+                "development" : {
+                    "mysql_database_user"         : "root",
+                    "mysql_database_password"     : "",
+                    "mysql_database_db"           : "SQLpie_development",
+                    "mysql_database_host"         : "localhost",
+                    "mysql_database_port"         : 3306
+                }                        
+            },
+            "options" : {
+                "server.port"                     : 5000,    
+                "search.stopwords"                : ["english.stop"],
+                "output.json_bytestrings"         : true,
+                "background.indexer"              : true
+            }
+        }
+
+
+== 5. Create the database required by SQLpie.
+
+    First, check the MySQL settings in the config/config.json before continuing.
+
+    Then, switch to the project directory, and create the actual database by running the following command:
+    
+    $ python scripts/create_db.py
+    
+    That will create the database for the 'development' environment, which is the default environment.
+    To create a database for other environments, set the sqlpie_env environment variable accordingly.
+    e.g.
+    
+    $ sqlpie_env=production python scripts/create_db.py
+
+    The command above will drop the database and recreate it. It runs the commands in the following files:
+        sqlpie/db/sql/schema.sql      (DDL statements)
+        sqlpie/db/sql/seed.sql        (DML statements)
+
+
+== 6. Run the application.
+
+    To launch the default web server, run:
+
+    $ python application.py
+
+
+== 7. Debugging the applicaton.
+
+    To launch the server in debug mode, use the sqlpie_debug environment variable.
+    e.g.
+
+    $ sqlpie_debug=true python application.py
+
+
+== 8. Using the shell.
+
+    There's a separate document describing the shell utility.  Use the following command to launch the shell:
+
+    $ python scripts/shell.py
+
+
+== 9. Running in production.
+
+    If you're running in production, you might not want to hardcode the database settings.
+    In that case, you can use certain environment variables to overwrite the database settings in the configuration.
+    These are the available environment variables for database configuration:
+    - mysql_database_user
+    - mysql_database_password
+    - mysql_database_db
+    - mysql_database_host
+    - mysql_database_port
+            

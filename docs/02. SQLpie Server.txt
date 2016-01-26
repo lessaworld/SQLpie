@@ -1,0 +1,91 @@
+==============================================================
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+==============================================================
+
+
+== The SQLpie server
+
+    To start the server simply type:
+    
+    $ python ./application.py
+
+    * When the server starts, it loads the config/config.json file.
+    * It's also responsible for starting any background threads.
+        e.g. if enabled in the configuration, a background thread runs to continuosly index documents.
+    * By default, the development server starts in the port defined by the configuration option `server.port`
+
+    The server provides 3 endpoints that can be accessible over HTTP GET commands
+
+    /ping     : A simple test to ensure the server is running.
+
+    http://localhost:5000/ping
+
+
+    /stats    : Summary of internal server statistics and value of key variables.
+                Same output as the /stats API Endpoing.
+
+    http://localhost:5000/stats
+
+    {
+        "cachebuckets": [
+            "_STOPWORDS",
+            "_OPTIONS"
+        ],
+        "database_name": "sqlpie_development",
+        "database_schema": "1.21",
+        "num_docs": 0,
+        "num_observations": 0,
+        "sqlpie_debug": "true",
+        "sqlpie_env": "development"
+    }
+
+
+    /docs  :    Display all the project documentation.
+                This includes all the API documentation.
+    
+    http://localhost:5000/docs
+
+
+== Setting up the SQLpie server on AWS.
+
+    This is not the only way to setup SQLpie on AWS, but I personally find it to be the simplest one.
+
+    Important: Make sure that your existing RDS database can access this new Beanstalk environment.
+
+    1. Pack your Git checkout into a zip release file. e.g.
+        $ git archive --format=zip HEAD > release.zip
+    2. Go to the AWS Console.
+    3. Create a new AWS Beanstalk Application (use any available name you like)
+    4. Create a new Python 2.7 WebServer Environment.
+        - 64bit Amazon Linux 2015.09 v2.0.6 running Python 2.7
+    5. When asked to select a source for your application version, upload the release file you just created.
+    6. When asked to name the new environment, just use any available name you like.
+    7. Choose an instance type (the bigger, the better; it all depends on how much traffic/data you need to handle)
+    8. Select the EC2 keypair (as applicable)
+    9. Beyond this configuration, just change any other settings that are applicable to your particular case.
+	10. Change the inbound rules for the security group of the instance to allow the right port to be accessed.
+    11. Review everything and click "Launch"
+
+	=== Environment Variables:
+	
+	This is in case you opted not to hardcode your database settings in the config.json file.
+	
+	Go to the configuration option in the AWS Beanstalk, and provide the environment variables below: 
+	i.e.
+	mysql_database_port, mysql_database_password, mysql_database_user, mysql_database_host, mysql_database_db
+	
+	While you're there, know that you can also use the other environment variables here: sqlpie_debug and sqlpie_env
+	
+    === Testing the AWS install:
+    
+    To test the install, just call the following API Endpoint using your web browser:
+    
+    http://<environment-name>.elasticbeanstalk.com/ping
+
+    The documentation will also be accessible.
+
+    http://<environment-name>.elasticbeanstalk.com/docs
+
+

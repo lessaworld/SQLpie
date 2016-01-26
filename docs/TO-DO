@@ -1,0 +1,39 @@
+                            Some SQLpie TO DO ideas
+
+
+See README and/or http://sqlpie.com for more information.
+
+These are just some of the ideas for the framework, in no specific priority order.
+
+================================ Unknown Release ==============================
+
+* Treat document buckets just like any other field;
+    - That involves removing the Bucket table and using the special field "_bucket" just like any other field.
+    - This improvement might also help searching across buckets.
+    - All queries that link tables by bucket_id will also benefit as the extra join would go away.
+
+* Test the framework for scalability using lots of documents and observationa;
+    - Explain Framework Limitations;
+    - Review the Database Schema
+    - Create any necessary table indexes	
+
+* Create an easy way to integrate it with 3rd-party APIs (Bing, LinkedIn, SimplyHired, Google Maps, etc...);
+
+* Create an embedded Data Visualization feature;
+
+* Improve Search Performance;
+
+* Support Query Synonyms (e.g. US, USA, U.S.A, U.S., United States, etc...);
+
+* Support nGram Search Indices;
+
+* Support Phonetic Search;
+
+* Add "Sentiment Analysis and Spam/Ham" examples involving the Classification Service;
+
+* Create a demo using a large dataset;
+
+* Create a Numeric Prediction Service (that is based on Linear Regression);
+    - Currently, we can do Label Prediction (using the Classifier Service)
+
+* Cleanup excessive whitespaces in SQL statements;

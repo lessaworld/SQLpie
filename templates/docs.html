@@ -1,0 +1,48 @@
+<!--
+
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+
+-->
+
+<link rel="stylesheet" type="text/css" href="/static/sqlpie.css"/>
+
+<div class="branding">
+<pre>
+SQLpie&trade; License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+
+<pre>
+</div>
+
+<div class="header" id="menu">
+Documentation as of tagged release: {{ vars["database_schema"] }}
+<br/><br/>
+{% for f in vars["keys"] %}
+<a href="#{{ f }}" class="heading">{{ vars["docs"][f][0] }}</a><br/>
+{% endfor %}
+</div>
+<br/>
+<hr/>
+{% for f in vars["keys"] %}
+<div class="section" id="{{ f }}"><span>&target;&nbsp;{{ vars["docs"][f][0] }}</span>
+<div class="documentation">
+<pre>
+{{ vars["docs"][f][1] }}
+</pre>
+</div>
+<a href="#menu" class="return">[return to top menu]</a>
+</div>
+<br/>
+{% endfor %}
+
+<div class="branding">
+<pre>
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+
+<pre>
+</div>

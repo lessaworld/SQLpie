@@ -1,0 +1,51 @@
+==============================================================
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+==============================================================
+
+
+== Running code tests
+
+    * A lot of tests have been created for SQLpie.
+    * They try to test lots of different API scenarios.
+    * More tests will be added in the future.
+    
+    Before running the tests, you need to ensure you have a test database in place.
+    Tests are allways executed in the test environment as the database is also reset at the beginning of each test.
+    
+    To create the test database, execute the command below.
+    
+    $ sqlpie_env=test python scripts/create_db.py
+    
+    Next, to run the tests, type:
+    
+    $ python ./scripts/run_tests.py
+
+    If you need to run the tests in debug mode so you can get more detailed information about the code execution, type:
+    
+    $ sqlpie_debug=true python scripts/run_tests.py
+
+
+== About the run_tests.py test script
+
+    * The script imports all classes in the /tests directory.
+    * It resets the entire tests database.
+    * And it runs all the tests.
+
+    Every major component of the system has its own set of tests.
+    They're all imported and tested by the run_tests.py script.
+    
+        from document_tests import DocumentTests
+        from observation_tests import ObservationTests
+        from service_indexer_tests import ServiceIndexerTests
+        from service_searcher_tests import ServiceSearcherTests
+        from health_tests import HealthTests
+        from util_tests import UtilTests
+        from caching_tests import CachingTests
+        from service_tagcloud_tests import ServiceTagCloudTests
+        from service_geosearch_parser_tests import ServiceGeoSearchParserTests
+        from service_classifier_tests import ServiceClassifierTests
+        from service_matching_tests import ServiceMatchingTests
+        from service_collaborative_tests import ServiceCollaborativeTests
+        from service_summarization_tests import ServiceSummarizationTests

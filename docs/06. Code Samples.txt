@@ -1,0 +1,54 @@
+==============================================================
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+==============================================================
+
+
+== Sample Programs
+
+    The idea here is to showcase how to use the SQLpie client.
+    
+== Simple Ping:
+
+    $ python examples/ping_example.py 
+    this is a nicelly formatted text output:
+    {
+        "ping": "pong"
+    }
+
+    this is a JSON (Python dictionary) object:
+    {u'ping': u'pong'}
+
+    ... and this the key being directly accessed.
+    pong
+    $
+
+== Hello World:
+
+    $ python examples/helloworld_example.py 
+    Let's ensure that our test product is not in the test_products bucket.
+        {
+            "success": true
+        }
+
+    This should not find the document.
+        {'http_error_code': 400, u'success': False, u'err': u'Record Not Found.'}
+
+    So now it's time to add a new document.
+        {
+            "record_count": 1,
+            "success": true
+        }
+
+    The document can now be retrieved.
+        {
+            "document": {
+                "_bucket": "test_products",
+                "_id": "00032",
+                "price": 23.5,
+                "product": "Hello World Laptop Computer"
+            },
+            "success": true
+        }
+    $

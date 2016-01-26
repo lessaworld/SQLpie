@@ -1,0 +1,41 @@
+==============================================================
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+==============================================================
+
+
+== Using the SQLpie client with your Python program.
+
+    1. Copy the sqlpie/clients/python/sqlpie_client.py to your project.
+    2. Import the file
+    3. Use the documented API.
+    
+    e.g.
+
+    import sqlpie_client
+    sqlrc = sqlpie_client.SQLpieClient("http://localhost:5000")
+    response = sqlrc.ping()
+
+    By default, the responses return JSON objects, which are converted into Python objects. e.g.
+    
+        {"ping": "pong"}
+        
+    If you want to return a pretty-printed text instead, just use the initialization below.
+
+    import sqlpie_client
+    sqlrc = sqlpie_client.SQLpieClient("http://localhost:5000", json_responses=False)
+    response = sqlrc.ping()
+
+    The response will be in plain formatted text. e.g.
+    
+        {
+            "ping": "pong"
+        }
+
+
+== Using the SQLpie Client with other non-Python programs.
+
+    * Currently, the only provided client is the Python library.
+    * Eventually, other clients (e.g. Rails, PHP, Java, etc.) can be created. 
+    * For now, the easies way is to use the SQLpie API directly. See the SQLpie API document for more details.

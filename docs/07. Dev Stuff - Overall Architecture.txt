@@ -1,0 +1,17 @@
+==============================================================
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+==============================================================
+
+
+== Developing code for SQLpie
+
+    First, some key realities:
+
+    * SQLpie is not complete or perfect.
+    * SQLpie is intended to be built upon and further extended. 
+	* SQLpie had a purpose when first created. Hopefully, it's still useful.
+	* Not all SQLpie services are likely to perform well with very large datasets - some testing is required.
+    
+    To Be Documented: Add details about the overall architecture.

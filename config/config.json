@@ -1,0 +1,31 @@
+{
+    "db" : {
+        "production" : {
+            "mysql_database_user"          : "root",
+            "mysql_database_password"      : "",
+            "mysql_database_db"            : "SQLpie_production",
+            "mysql_database_host"          : "localhost",
+            "mysql_database_port"          : 3306
+		},
+        "test" : {
+            "mysql_database_user"          : "root",
+            "mysql_database_password"      : "",
+            "mysql_database_db"            : "SQLpie_test",
+            "mysql_database_host"          : "localhost",
+            "mysql_database_port"          : 3306
+        },
+        "development" : {
+            "mysql_database_user"          : "root",
+            "mysql_database_password"      : "",
+            "mysql_database_db"            : "SQLpie_development",
+            "mysql_database_host"          : "localhost",
+            "mysql_database_port"          : 3306
+        }
+    },
+    "options" : {
+        "server.port"                      : 5000,
+        "search.stopwords"                 : ["english.stop"],
+        "output.json_bytestrings"          : true,
+        "background.indexer"               : false
+    }
+}

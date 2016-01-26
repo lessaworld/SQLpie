@@ -1,0 +1,27 @@
+{
+    "name": "John Smith",
+    "location": {
+        "city" : "Pittsburgh",
+        "state" : "PA"
+     },
+    "years_experience": 20,
+    "score": 9.95,
+    "errors": [NaN, Infinity],
+    "languages": ["portuguese","english","spanish"],
+    "certifications": null,
+    "needs_visa": false,
+    "wear_glasses": true,
+    "skills": {
+        "web":[
+            {"name": "html",
+             "years": "5"
+            },
+            {"name": "css",
+             "years": "3"
+            }],
+        "database":[
+            {"name": "sql",
+             "years": "7"
+            }]
+    }
+}

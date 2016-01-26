@@ -1,0 +1,1 @@
+INSERT INTO `schema` (version) VALUES ("1.1.0");

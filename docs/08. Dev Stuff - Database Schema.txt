@@ -1,0 +1,156 @@
+==============================================================
+SQLpie License (MIT License)
+Copyright (c) 2011-2016 André Lessa, http://sqlpie.com
+See LICENSE file.
+==============================================================
+
+
+--
+-- Document Tables
+--
+
+TABLE buckets: 
+ id                        INT    UNSIGNED        - Unique record identifier
+ bucket                    VARCHAR(255)           - Bucket name assigned by user
+ bucket_id                 BINARY(20)             - Bucket's uniquely encoded name
+ doc_count                 INT UNSIGNED           - Number of documents assigned to this document
+
+TABLE documents:
+ id                        INT    UNSIGNED        - Unique record identifier
+ bucket_id                 BINARY(20)             - 
+ document_id               BINARY(20)             - 
+ document                  MEDIUMTEXT             - 
+ is_compressed             BOOLEAN                - 
+ state                     TINYINT UNSIGNED       - state: 0(new), 1(indexed)
+ created_at                TIMESTAMP              - 
+ tdidf_score               DOUBLE                 - 
+
+--
+-- Indexing Tables
+--
+
+TABLE content_keys:
+ id                        INT    UNSIGNED        - Unique record identifier
+ content_key               VARCHAR(2048)          - 
+ key_id                    BINARY(20)             - 
+ key_count                 INT UNSIGNED           - defaults to 1
+
+TABLE contents:
+ id                        INT    UNSIGNED        - Unique record identifier
+ bucket_id                 BINARY(20)             - 
+ document_id               BINARY(20)             - 
+ key_id                    BINARY(20)             - 
+ content_type              TINYINT UNSIGNED       - 
+ value                     VARCHAR(16384)         - 
+ numeric_value             DOUBLE                 - 
+
+TABLE terms:
+  id                       INT UNSIGNED           - Unique record identifier
+  bucket_id                BINARY(20)             - 
+  term_id                  BINARY(20)             - 
+  term_count               INT UNSIGNED           - defaults to 1
+
+TABLE content_terms:
+  id                       INT UNSIGNED           - Unique record identifier
+  bucket_id                BINARY(20)             - 
+  document_id              BINARY(20)             - 
+  key_id                   BINARY(20)             - 
+  term_id                  BINARY(20)             - 
+  term_pos                 INT UNSIGNED           - 
+  original                 VARCHAR(255)           - 
+
+--
+-- Indexing/Ranking Tables
+--
+
+TABLE ranking_tf:
+  id                       INT UNSIGNED           - Unique record identifier
+  bucket_id                BINARY(20)             - 
+  document_id              BINARY(20)             - 
+  term_id                  BINARY(20)             - 
+  normalized_frequency     FLOAT                  - defaults 0
+
+
+TABLE ranking_idf:
+  id                       INT UNSIGNED           - Unique record identifier
+  bucket_id                BINARY(20)             - 
+  term_id                  BINARY(20)             - 
+  num_doc                  INT                    - defaults to 1,
+  frequency                FLOAT                  - defaults to 0,
+
+--
+-- Observation Tables
+--
+
+TABLE predicates:
+ id                        INT    UNSIGNED        - Unique record identifier
+ predicate                 VARCHAR(255)           - 
+ predicate_id              BINARY(20)             - 
+ observation_count         INT UNSIGNED           - defaults to 1,
+
+TABLE observations:
+  id                       INT UNSIGNED           - Unique record identifier
+  created_at               TIMESTAMP              - 
+  subject_bucket_id        BINARY(20)             - 
+  subject_id               BINARY(20)             - 
+  object_bucket_id         BINARY(20)             - 
+  object_id                BINARY(20)             - 
+  predicate_id             BINARY(20)             - 
+  predicate_type           TINYINT UNSIGNED       - 
+  predicate_value          VARCHAR(2048)          - 
+  observation              MEDIUMTEXT             - 
+  is_compressed            BOOLEAN                - 
+
+--
+-- Persistent Caching Table
+--
+
+TABLE caches:
+  id                      INT UNSIGNED            - Unique record identifier
+  bucket_id               BINARY(20)              - 
+  key_id                  BINARY(20)              - 
+  expire_at               TIMESTAMP               - 
+  cache_key               VARCHAR(2048)           - 
+  value                   VARCHAR(2048)           - 
+
+--
+-- Geo Locations Table
+--
+
+TABLE geo_documents:
+  id                      INT UNSIGNED            - Unique record identifier
+  bucket_id               BINARY(20)              - 
+  document_id             BINARY(20)              - 
+  latitude                DOUBLE(9,6)             - 
+  longitude               DOUBLE(9,6)             - 
+
+--
+-- Classifier Models' Table
+--
+
+TABLE models:
+  id                      INT UNSIGNED            - Unique record identifier
+  bucket                  VARCHAR(255)            - 
+  predicate               VARCHAR(255)            - 
+  model                   VARCHAR(255)            - 
+  bucket_id               BINARY(20)              - 
+  predicate_id            BINARY(20)              - 
+  model_id                BINARY(20)              - 
+  last_observation        TIMESTAMP               - 
+
+TABLE model_classifiers:
+  id                      INT UNSIGNED            - Unique record identifier
+  model_id                BINARY(20)              -
+  subject_id              BINARY(20)              -
+  score_type              TINYINT UNSIGNED        - score_type: (0) Label, (1) Feature, (2) LabelFeature
+  score                   FLOAT                   - Sum of TFIDF (For each Label, For each feature, For each label+feature)
+  label                   VARCHAR(255)            -
+  feature                 VARCHAR(255)            -
+
+--
+-- Schema Table
+--
+
+TABLE schema:
+  id                     INT UNSIGNED             - Unique record identifier
+  version                VARCHAR(255)             - Version of the DB Schema / version of the application
