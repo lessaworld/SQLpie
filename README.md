@@ -89,10 +89,17 @@ Create an environment database:
 
 	$ python scripts/create_db.py
 
+Note that the command above will create a database in the default development environment. To create the database in a different environment, use instead:
+
+	$ sqlpie_env=production python scripts/create_db.py
+
 Start the server (see documentation to start the server on a different port):
 
 	$ python application.py
-	
+
+To run the server in a specific environment, use instead:
+
+	$ sqlpie_env=production python application.py
 
 Now just try the API, either by calling it directly:
 
@@ -104,14 +111,10 @@ Or, by integrating the provided Python client file with your own code:
 	sqlrc = sqlpie_client.SQLpieClient("http://localhost:5000")
 	response = sqlrc.document_put({"documents":[{"_id":"001", "text":"Hello World, Johnny Appleseed"}]})
 
-Note that the commands above will create a database in the development environment. In general, to create the database in a different environment, or to run the server in a different environment, use:
-
-	$ sqlpie_env=production python scripts/create_db.py
-
 ## [SQLpie: Server, Client, and Shell](id:server_client_shell)
 ---
 
-Besides the SQLpie Server that acts as a broker between your API Endpoints and the backend MySQL database, doing all the crazy stuff, this project also includes a pretty well documented Python client module you can import in your projects as briefly demonstrated above. 
+Besides the SQLpie Server that acts as a broker between your API Endpoints and the backend MySQL database, doing all the crazy stuff, this project also includes a pretty well documented Python client module you can import in your projects as briefly demonstrated on this page. 
 
 Optionally, you can also play with the provided shell, which allows you to quickly interact with the API Endpoints. To get started on that, ensure the SQLpie Server is running, and execute the following command:
 
