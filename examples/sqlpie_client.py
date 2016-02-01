@@ -15,7 +15,9 @@ class SQLpieClient(object):
         self.sqlpie_server = sqlpie_server
         self.json_responses = json_responses
 
-    def _handler(self, endpoint, json_request):
+    def _handler(self, endpoint, json_request=None):
+        if json_request is None:
+            json_request = {}
         try:
             if type(json_request).__name__ != "dict":
                 # if the input is text, it converts into an actual object
@@ -41,7 +43,7 @@ class SQLpieClient(object):
     # Health Checks
     #
 
-    def ping(self, json_request={}):
+    def ping(self, json_request=None):
         u"""/ping : Health check that sends a simple test request to the server.
 
         NOTES:
@@ -76,7 +78,7 @@ class SQLpieClient(object):
         """
         return self._handler("/ping", json_request)
 
-    def stats(self, json_request={}):
+    def stats(self, json_request=None):
         u"""/stats : Shows internal state of the server installation and values of key environment variables.
 
         NOTES:
@@ -123,7 +125,7 @@ class SQLpieClient(object):
     # Documents
     #
 
-    def document_put(self, json_request={}):
+    def document_put(self, json_request=None):
         u"""/document/put <json_object> : Adds one or more JSON documents to the SQLpie storage.
 
         NOTES:
@@ -188,7 +190,7 @@ class SQLpieClient(object):
         """
         return self._handler("/document/put", json_request)
 
-    def document_get(self, json_request={}):
+    def document_get(self, json_request=None):
         u"""/document/get <json_object> : Returns a single JSON document for a given identifier (ie. the value of the _id field)
 
         JSON_OBJECT PARAMS:
@@ -216,7 +218,7 @@ class SQLpieClient(object):
         """
         return self._handler("/document/get", json_request)
 
-    def document_remove(self, json_request={}):
+    def document_remove(self, json_request=None):
         u"""/document/remove <json_object> : Deletes a single JSON document for a given identifier (ie. the value of the _id field)
 
         JSON_OBJECT PARAMS:
@@ -236,7 +238,7 @@ class SQLpieClient(object):
         """
         return self._handler("/document/remove", json_request)
 
-    def document_reset(self, json_request={}):
+    def document_reset(self, json_request=None):
         u"""/document/reset : Deletes ALL documents in the database.
 
         NOTES:
@@ -262,7 +264,7 @@ class SQLpieClient(object):
     # Observations
     #
 
-    def observation_put(self, json_request={}):
+    def observation_put(self, json_request=None):
         u"""/observation/put <json_object> : Adds one or more JSON observations to the SQLpie storage.
 
         NOTES:
@@ -320,7 +322,7 @@ class SQLpieClient(object):
         """
         return self._handler("/observation/put", json_request)
 
-    def observation_get(self, json_request={}):
+    def observation_get(self, json_request=None):
         u"""/observation/get :  Returns JSON observations for a given lookup query
 
         NOTES:
@@ -377,7 +379,7 @@ class SQLpieClient(object):
         """
         return self._handler("/observation/get", json_request)
 
-    def observation_remove(self, json_request={}):
+    def observation_remove(self, json_request=None):
         u"""/observation/remove <json_object> : Deletes observations based on a specific selection criteria.
 
         NOTES:
@@ -405,7 +407,7 @@ class SQLpieClient(object):
         """
         return self._handler("/observation/remove", json_request)
 
-    def observation_reset(self, json_request={}):
+    def observation_reset(self, json_request=None):
         u"""/observation/reset : Deletes ALL observations in the database.
 
         NOTES:
@@ -431,7 +433,7 @@ class SQLpieClient(object):
     # Search
     #
 
-    def service_index(self, json_request={}):
+    def service_index(self, json_request=None):
         u"""/service/index : Indexes all documents that haven't been indexed yet.
 
         NOTES:
@@ -463,7 +465,7 @@ class SQLpieClient(object):
         """
         return self._handler("/service/index", json_request)
 
-    def service_search(self, json_request={}):
+    def service_search(self, json_request=None):
         u"""/service/search : Searches for indexed documents using Boolean/Vector search. GeoSearch and TagCloud also available.
 
         NOTES:
@@ -594,7 +596,7 @@ class SQLpieClient(object):
     # Matching
     #
 
-    def service_matching(self, json_request={}):
+    def service_matching(self, json_request=None):
         u"""/service/matching/ : Finds documents that match a given document.
 
         NOTES:
@@ -670,7 +672,7 @@ class SQLpieClient(object):
     # Classifier
     #
 
-    def service_classifier(self, json_request={}):
+    def service_classifier(self, json_request=None):
         u"""/service/classifier/init : Initializes a new classifier model.
 
         NOTES:
@@ -696,7 +698,7 @@ class SQLpieClient(object):
         """
         return self._handler("/service/classifier/init", json_request)
 
-    def service_classifier_train(self, json_request={}):
+    def service_classifier_train(self, json_request=None):
         u"""/service/classifier/train : Trains a specific classifier model.
 
         NOTES:
@@ -726,7 +728,7 @@ class SQLpieClient(object):
         """
         return self._handler("/service/classifier/train", json_request)
 
-    def service_classifier_clear(self, json_request={}):
+    def service_classifier_clear(self, json_request=None):
         u"""/service/classifier/clear : Removes all training data from a given classifier.
 
         NOTES:
@@ -748,7 +750,7 @@ class SQLpieClient(object):
         """
         return self._handler("/service/classifier/clear", json_request)
 
-    def service_classifier_reset(self, json_request={}):
+    def service_classifier_reset(self, json_request=None):
         u"""/service/classifier/reset : Deletes ALL classification models in the database.
 
         NOTES:
@@ -770,7 +772,7 @@ class SQLpieClient(object):
         """
         return self._handler("/service/classifier/reset", json_request)
 
-    def service_classifier_predict(self, json_request={}):
+    def service_classifier_predict(self, json_request=None):
         u"""/service/classifier/predict : Predicts the best classification label for a given document in a given model.
 
         NOTES:
@@ -807,7 +809,7 @@ class SQLpieClient(object):
         """
         return self._handler("/service/classifier/predict", json_request)
 
-    def service_classifier_predictions(self, json_request={}):
+    def service_classifier_predictions(self, json_request=None):
         u"""/service/classifier/predictions : Returns all classification scores for all labels for a given subject.
 
         NOTES:
@@ -838,7 +840,7 @@ class SQLpieClient(object):
     #
 
 
-    def service_recommend(self, json_request={}):
+    def service_recommend(self, json_request=None):
         u"""/service/collaborative/recommendation : Recommends subjects for an object, or objects for a subject.
 
         NOTES:
@@ -881,7 +883,7 @@ class SQLpieClient(object):
         """
         return self._handler("/service/collaborative/recommendation", json_request)
 
-    def service_similarity(self, json_request={}):
+    def service_similarity(self, json_request=None):
         u"""/service/collaborative/similarity : Finds similar subjects for a subject, or similar objects for an object.
 
         NOTES:
@@ -924,7 +926,7 @@ class SQLpieClient(object):
     # Summarization
     #
 
-    def service_summarization(self, json_request={}):
+    def service_summarization(self, json_request=None):
         u"""/service/summarization : Summarizes a document or document snippet, identifying keywords and entities.
 
         NOTES:
@@ -972,7 +974,7 @@ class SQLpieClient(object):
     # Caching
     #
 
-    def caching_initialize(self, json_request={}):
+    def caching_initialize(self, json_request=None):
         u"""/caching/initialize : Initializes a caching structure
 
         NOTES:
@@ -998,7 +1000,7 @@ class SQLpieClient(object):
         """
         return self._handler("/caching/initialize", json_request)
 
-    def caching_add(self, json_request={}):
+    def caching_add(self, json_request=None):
         u"""/caching/add : Adds a key entry to an existing cache structure.
 
         NOTES:
@@ -1028,7 +1030,7 @@ class SQLpieClient(object):
         """
         return self._handler("/caching/add", json_request)
 
-    def caching_put(self, json_request={}):
+    def caching_put(self, json_request=None):
         u"""/caching/put : Adds a key/value pair to an existing cache structure.
 
         NOTES:
@@ -1056,7 +1058,7 @@ class SQLpieClient(object):
         """
         return self._handler("/caching/put", json_request)
 
-    def caching_get(self, json_request={}):
+    def caching_get(self, json_request=None):
         u"""/caching/get : Returns the value of a cached key
 
         NOTES:
@@ -1086,7 +1088,7 @@ class SQLpieClient(object):
         """
         return self._handler("/caching/get", json_request)
 
-    def caching_remove(self, json_request={}):
+    def caching_remove(self, json_request=None):
         u"""/caching/remove : Removes a key from a cache.
 
         NOTES:
@@ -1112,7 +1114,7 @@ class SQLpieClient(object):
         """
         return self._handler("/caching/remove", json_request)
 
-    def caching_flush(self, json_request={}):
+    def caching_flush(self, json_request=None):
         u"""/caching/flush : Persists cache in-memory data changes to the database.
 
         NOTES:
@@ -1134,7 +1136,7 @@ class SQLpieClient(object):
         """
         return self._handler("/caching/flush", json_request)
 
-    def caching_reset(self, json_request={}):
+    def caching_reset(self, json_request=None):
         u"""/caching/reset : Deletes ALL non-system caches in the database.
 
         NOTES:
@@ -1156,7 +1158,7 @@ class SQLpieClient(object):
         """
         return self._handler("/caching/reset", json_request)
 
-    def caching_destroy(self, json_request={}):
+    def caching_destroy(self, json_request=None):
         u"""/caching/destroy : Destroys the entire caching object.
 
         NOTES:
