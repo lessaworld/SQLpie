@@ -7,15 +7,15 @@ See LICENSE file.
 
 """
 
-def parse(d={}):
+def parse(d=None):
 
     #
     # TO DO : Add an lat/long look up here based on location and zip code.
     #
-
-    d["latitude"] = 0
-    d["longitude"] = 0
-    return d
+    if d is not None:
+        d["latitude"] = 0
+        d["longitude"] = 0
+    return d or {}
 
 if __name__ == "__main__":
     #
